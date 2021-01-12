@@ -10,41 +10,97 @@ class InputEvents extends Component {
       inputText: 'Hello world',
       formInputText: 'Hello world 2'
     }
+    this.handleOnClick = this.handleOnClick.bind(this);
+    this.handleOnMouseDown = this.handleOnMouseDown.bind(this);
+    this.handleOnMouseUp = this.handleOnMouseUp.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
+    // this.handleOnSubmit = this.handleOnSubmit.bind(this);
+    this.handleOnFormChange = this.handleOnFormChange.bind(this);
+  }
+  ;
+
+  handleOnClick() {
+    // console.log(this.state.mouseClicked);
+    this.setState((state) => {
+      return {
+        mouseClicked: state.mouseClicked + 1
+      }
+    })
+  }
+
+  handleOnMouseDown() {
+    this.setState({
+      mouseDown: true
+    })
+  }
+
+  handleOnMouseUp() {
+    this.setState({
+      mouseDown: false
+    })
+  }
+
+  handleOnChange(e) {
+    this.setState({
+      inputText: e.target.value
+    })
+  }
+
+  handleOnFormChange(e) {
+    this.setState({
+      formInputText: e.target.value
+    })
+  }
+
+
+  handleOnSubmit = (e) => {
+    e.preventDefault();
+    this.setState({
+      formInputTextSubmitted: this.state.formInputText,
+      formInputText: ":-)"
+    })
   }
 
   render() {
     return (
+
       <>
-      <section>
-        <h3>Mouse events:</h3>
-        <button>
-          Click me
+        <section>
+          <h3>Mouse events:</h3>
+          <button
+            onClick={this.handleOnClick}
+            onMouseDown={this.handleOnMouseDown}
+            onMouseUp={this.handleOnMouseUp}
+          >
+            Click me
         </button>
-        <p>Button mouse down: {this.state.mouseDown ? 'true' : 'false'}</p>
-        <p>Button clicked: {this.state.mouseClicked}</p>
-      </section>
+          <p>Button mouse down: {this.state.mouseDown ? 'true' : 'false'}</p>
+          <p>Button clicked: {this.state.mouseClicked}</p>
+        </section>
 
-      <section>
-        <h3>Input change events:</h3>
-        <input
-          type="text"
-          value={this.state.inputText}
-        />
-        <p>Input value: {this.state.inputText}</p>
-      </section>
-
-      <section>
-        <h3>Form Submit events:</h3>
-        <form>
+        <section>
+          <h3>Input change events:</h3>
           <input
             type="text"
-            value={this.state.formInputText}
+            value={this.state.inputText}
+            onChange={this.handleOnChange}
           />
-          <button type="submit">Submit</button>
-          <p>Input value: {this.state.formInputText}</p>
-          <p>Submitted value: {this.state.formInputTextSubmitted}</p>
-        </form>
-      </section>
+          <p>Input value: {this.state.inputText}</p>
+        </section>
+
+        <section>
+          <h3>Form Submit events:</h3>
+          <form onSubmit={this.handleOnSubmit}>
+            <input
+              type="text"
+              value={this.state.formInputText}
+              onChange={this.handleOnFormChange}
+            />
+            <button type="submit">Submit</button>
+            <p>Input value: {this.state.formInputText}</p>
+            <p>Submitted value: {this.state.formInputTextSubmitted}</p>
+          </form>
+        </section>
       </>
     )
   }
