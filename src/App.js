@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-import './App.css';
 
-import Card from './Card.js'
-import './Card.css';
+import InputEvents from './events/InputEvents'
+import MovementEvents from './events/MovementEvents'
+import './events/Events.css'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Card />
-        <Card />
-        <Card />
+        <InputEvents />
+        <MovementEvents />
       </div>
     );
   }
