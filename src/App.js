@@ -40,7 +40,7 @@ class App extends Component {
         <h1>Star Wars Species List</h1>
         <Router>
           <ul>
-            <li><Link to="/" >Home.</Link></li>
+            <li><Link to="/" >Home</Link></li>
           </ul>
           <hr />
 
