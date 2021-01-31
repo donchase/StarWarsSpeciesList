@@ -3,6 +3,10 @@ body {
   font-family: Helvetica;
 }
 
+h3, p {
+  text-align: center;
+}
+
 .card-container {
   background-color: #fff;
   border-radius: 6px;
@@ -16,6 +20,31 @@ body {
   background-color: rgba(80, 103, 124, 0.73);
   padding: 14px 18px;
   font-size: 18px;
+  position: relative;
+}
+
+.card-header .favorite {
+  position: absolute;
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.card-header .favorite:hover {
+  color: gold;
+}
+
+.card-header .favorite.active:after {
+  content: "\2605";
+  position: absolute;
+  left: 0;
+  color: gold;
 }
 
 .card-header span {

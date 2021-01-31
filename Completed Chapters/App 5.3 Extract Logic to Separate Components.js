@@ -8,7 +8,7 @@ import {
 import './Default.css';
 
 import Home from './components/Home'
-import NavChallenge from './starWars/NavChallenge'
+import Nav from './starWars/Nav'
 import Species from './starWars/Species'
 import Error from './components/Error'
 
@@ -24,7 +24,7 @@ class App extends Component {
   }
   */
 
-  // Removed because separate <NavChallenge/> component makes it redundant.
+  // Removed because separate <Nav/> component makes it redundant.
   /*
   componentDidMount() {
     // API Fetch list of species from SWAPI.dev (or people from SWAPI.tech)
@@ -37,14 +37,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Star Wars Species List</h1>
+        <h1>Star Wars Species</h1>
         <Router>
           <ul>
             <li><Link to="/" >Home</Link></li>
           </ul>
           <hr />
 
-          <NavChallenge />
+          <Nav />
 
           <hr />
 
